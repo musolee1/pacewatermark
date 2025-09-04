@@ -2,6 +2,9 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f15a0b">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <title>PACE Fotoğraf İşleme</title>
 <style>
 body {
@@ -117,8 +120,8 @@ button:active {
     <label>Logo Boyutu (orantı): <span id="sizeValue">0.2</span></label>
     <input type="range" id="sizeSlider" min="0.1" max="1" step="0.01" value="0.2">
 
-    <label>Logo X Konumu: <span id="xValue">70</span> px</label>
-    <input type="range" id="xSlider" min="0" max="800" step="1" value="70">
+    <label>Logo X Konumu: <span id="xValue">580</span> px</label>
+    <input type="range" id="xSlider" min="0" max="800" step="1" value="580">
 
     <label>Logo Y Konumu: <span id="yValue">70</span> px</label>
     <input type="range" id="ySlider" min="0" max="800" step="1" value="70">
@@ -228,6 +231,17 @@ downloadBtn.addEventListener("click", () => {
     link.href = hiddenCanvas.toDataURL("image/png");
     link.click();
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
 </script>
 </body>
 </html>
